@@ -3,8 +3,12 @@ import { NavLink } from 'react-router-dom'
 import { FiHome, FiPieChart, FiDollarSign, FiSettings, FiLogOut } from 'react-icons/fi'
 import { BsGraphUp, BsWallet2 } from 'react-icons/bs'
 import { RiExchangeLine } from 'react-icons/ri'
+import { useContext } from 'react'
+import { CryptoContext } from '../context/CryptoContext'
 
 const Sidebar = () => {
+  const { logout } = useContext(CryptoContext)
+
   return (
     <div className="w-64 bg-gray-900 text-white h-screen fixed left-0 top-0 p-6 flex flex-col">
       <div className="flex items-center mb-10">
@@ -22,46 +26,55 @@ const Sidebar = () => {
             </NavLink>
           </li>
           <li>
-            <a href="#" className="flex items-center p-3 rounded-lg hover:bg-gray-800">
+            <NavLink to="/market" className={({ isActive }) => 
+              `flex items-center p-3 rounded-lg ${isActive ? 'bg-gray-800 text-blue-400' : 'hover:bg-gray-800'}`}>
               <BsGraphUp className="mr-3" />
               Market
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="#" className="flex items-center p-3 rounded-lg hover:bg-gray-800">
+            <NavLink to="/portfolio" className={({ isActive }) => 
+              `flex items-center p-3 rounded-lg ${isActive ? 'bg-gray-800 text-blue-400' : 'hover:bg-gray-800'}`}>
               <FiPieChart className="mr-3" />
               Portfolio
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="#" className="flex items-center p-3 rounded-lg hover:bg-gray-800">
+            <NavLink to="/wallets" className={({ isActive }) => 
+              `flex items-center p-3 rounded-lg ${isActive ? 'bg-gray-800 text-blue-400' : 'hover:bg-gray-800'}`}>
               <BsWallet2 className="mr-3" />
               Wallets
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="#" className="flex items-center p-3 rounded-lg hover:bg-gray-800">
+            <NavLink to="/transactions" className={({ isActive }) => 
+              `flex items-center p-3 rounded-lg ${isActive ? 'bg-gray-800 text-blue-400' : 'hover:bg-gray-800'}`}>
               <RiExchangeLine className="mr-3" />
               Transactions
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="#" className="flex items-center p-3 rounded-lg hover:bg-gray-800">
+            <NavLink to="/exchange" className={({ isActive }) => 
+              `flex items-center p-3 rounded-lg ${isActive ? 'bg-gray-800 text-blue-400' : 'hover:bg-gray-800'}`}>
               <FiDollarSign className="mr-3" />
               Exchange
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="#" className="flex items-center p-3 rounded-lg hover:bg-gray-800">
+            <NavLink to="/settings" className={({ isActive }) => 
+              `flex items-center p-3 rounded-lg ${isActive ? 'bg-gray-800 text-blue-400' : 'hover:bg-gray-800'}`}>
               <FiSettings className="mr-3" />
               Settings
-            </a>
+            </NavLink>
           </li>
         </ul>
       </nav>
       
       <div className="mt-auto">
-        <button className="flex items-center p-3 rounded-lg hover:bg-gray-800 w-full">
+        <button 
+          onClick={logout}
+          className="flex items-center p-3 rounded-lg hover:bg-gray-800 w-full"
+        >
           <FiLogOut className="mr-3" />
           Logout
         </button>
