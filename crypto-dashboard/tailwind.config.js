@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      spacing: {
+        'touch': '48px', // Minimum recommended touch target size
+      }
+    },
   },
   plugins: [],
 }

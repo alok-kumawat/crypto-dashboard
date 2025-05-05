@@ -15,21 +15,22 @@ const Header = () => {
   } = useContext(CryptoContext)
 
   return (
-    <header className="ml-64 bg-gray-800 p-4 flex items-center justify-between border-b border-gray-700">
-      {/* Search Input - Now with search functionality */}
-      <div className="relative w-64">
+    <header className="ml-0 md:ml-64 bg-gray-800 p-4 flex flex-col md:flex-row items-center justify-between border-b border-gray-700 gap-4 md:gap-0">
+      {/* Search Input - full width on mobile, fixed width on desktop */}
+      <div className="relative w-full md:w-64">
         <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
         <input 
           type="text" 
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Search coins..." 
+          placeholder="Search coins, exchanges, etc..." 
           className="w-full bg-gray-700 rounded-lg py-2 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
       
-      <div className="flex items-center space-x-4">
-        {/* Time Range Filter - Maintained existing styling */}
+      {/* Right-side controls - wraps on mobile */}
+      <div className="flex items-center flex-wrap justify-center gap-3 md:gap-4">
+        {/* Time Range Filter */}
         <div className="flex items-center space-x-2 bg-gray-700 rounded-lg p-1">
           {['24h', '7d', '30d', '90d'].map(range => (
             <button
@@ -46,7 +47,7 @@ const Header = () => {
           ))}
         </div>
         
-        {/* Currency Select - Maintained existing styling */}
+        {/* Currency Select */}
         <select 
           value={selectedCurrency}
           onChange={(e) => setSelectedCurrency(e.target.value)}
@@ -58,13 +59,13 @@ const Header = () => {
           <option value="BTC">BTC</option>
         </select>
         
-        {/* Notification Bell - Unchanged */}
+        {/* Notification Bell */}
         <button className="p-2 rounded-full hover:bg-gray-700 relative">
           <FiBell className="text-lg" />
           <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
         </button>
         
-        {/* User Dropdown - Unchanged */}
+        {/* User Dropdown */}
         <div className="flex items-center space-x-2 group relative">
           <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
             <FiUser className="text-white" />
