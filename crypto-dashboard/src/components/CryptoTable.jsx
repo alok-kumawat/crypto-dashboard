@@ -70,7 +70,7 @@ const CryptoTable = () => {
     <div className="bg-gray-800 rounded-xl p-5">
       <h3 className="font-semibold mb-4">Top Cryptocurrencies</h3>
       <div className="overflow-x-auto">
-        <table className="w-full">
+        <table className="w-full min-w-[600px]"> {/* Added min-w-[600px] */}
           <thead>
             <tr className="text-left text-gray-400 text-sm border-b border-gray-700">
               <th className="pb-3 pl-2">S.no</th>
